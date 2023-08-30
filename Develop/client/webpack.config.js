@@ -3,9 +3,6 @@ const WebpackPwaManifest = require("webpack-pwa-manifest");
 const path = require("path");
 const { InjectManifest } = require("workbox-webpack-plugin");
 
-// TODO: Add and configure workbox plugins for a service worker and manifest file.
-// TODO: Add CSS loaders and babel to webpack.
-
 module.exports = () => {
   return {
     mode: "development",
@@ -15,20 +12,23 @@ module.exports = () => {
     },
     output: {
       filename: "[name].bundle.js",
-      path: path.resolve(__dirname, "client"),
+      path: path.resolve(__dirname, "dist"),
     },
     plugins: [
+      // TODO: Configure HtmlWebpackPlugin to generate HTML files
       new HtmlWebpackPlugin({
-        template: "./src/index.html",
-        filename: "index.html",
-        chunks: ["main"],
+        template: "./src/index.html", // Specify the template file
+        filename: "index.html", // Output filename
+        chunks: ["main"], // Include the "main" entry chunk
       }),
 
       new HtmlWebpackPlugin({
-        template: "./src/install.html",
-        filename: "install.html",
-        chunks: ["install"],
+        template: "./src/install.html", // Specify the template file
+        filename: "install.html", // Output filename
+        chunks: ["install"], // Include the "install" entry chunk
       }),
+
+      // TODO: Configure WebpackPwaManifest to generate a Web App Manifest
       new WebpackPwaManifest({
         name: "Just Another Text Editor",
         short_name: "JATE",
@@ -38,23 +38,28 @@ module.exports = () => {
         theme_color: "#000000",
         icons: [
           {
-            src: path.resolve("src/images/icon.png"),
+            src: path.resolve("src/images/logo.png"),
             sizes: [96, 128, 192, 256, 384, 512],
             purpose: "any maskable",
           },
         ],
       }),
+
+      // TODO: Configure InjectManifest to add your service worker
       new InjectManifest({
-        swSrc: "./src-sw.js",
+        swSrc: "./src-sw.js", // Specify the service worker source file
       }),
     ],
 
     module: {
       rules: [
+        // TODO: Configure CSS loaders for processing CSS files
         {
           test: /\.css$/,
           use: ["style-loader", "css-loader"],
         },
+
+        // TODO: Configure Babel loader for JavaScript files
         {
           test: /\.js$/,
           exclude: /node_modules/,
