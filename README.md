@@ -63,6 +63,19 @@ This project involves building a text editor that functions as a Progressive Web
 4. Create a `Procfile` and specify the server command.
 5. Deploy your app to Heroku using Git.
 
+## Running Locally
+
+To run the application locally and test it during development, follow these steps:
+
+1. Make sure you have Node.js and npm installed on your machine.
+
+2. Navigate to the project directory using the terminal.
+
+3. Install the project dependencies by running the following command:
+   ```bash
+   npm install
+   ```
+
 ## Testing and Debugging
 
 1. Open your deployed app's URL to test it in the browser.
