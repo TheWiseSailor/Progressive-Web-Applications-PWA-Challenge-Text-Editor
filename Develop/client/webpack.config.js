@@ -15,58 +15,53 @@ module.exports = () => {
       path: path.resolve(__dirname, "dist"),
     },
     plugins: [
-      // TODO: Configure HtmlWebpackPlugin to generate HTML files
       new HtmlWebpackPlugin({
-        template: "./src/index.html", // Specify the template file
-        filename: "index.html", // Output filename
-        chunks: ["main"], // Include the "main" entry chunk
+        template: "./index.html",
+        title: "JATE",
       }),
 
-      new HtmlWebpackPlugin({
-        template: "./src/install.html", // Specify the template file
-        filename: "install.html", // Output filename
-        chunks: ["install"], // Include the "install" entry chunk
+      new InjectManifest({
+        swSrc: "./src-sw.js",
+        swDest: "src-sw.js",
       }),
 
-      // TODO: Configure WebpackPwaManifest to generate a Web App Manifest
       new WebpackPwaManifest({
+        fingerprints: false,
+        inject: true,
         name: "Just Another Text Editor",
         short_name: "JATE",
-        description: "A simple text editor as a Progressive Web App",
-        start_url: "/",
-        background_color: "#ffffff",
-        theme_color: "#000000",
+        description: "Text Editor PWA using IndexedDB",
+        background_color: "#225ca3",
+        theme_color: "#225ca3",
+        start_url: "./",
+        publicPath: "./",
         icons: [
           {
             src: path.resolve("src/images/logo.png"),
             sizes: [96, 128, 192, 256, 384, 512],
-            purpose: "any maskable",
+            destination: path.join("assets", "icons"),
           },
         ],
-      }),
-
-      // TODO: Configure InjectManifest to add your service worker
-      new InjectManifest({
-        swSrc: "./src-sw.js", // Specify the service worker source file
       }),
     ],
 
     module: {
       rules: [
-        // TODO: Configure CSS loaders for processing CSS files
         {
-          test: /\.css$/,
+          test: /\.css$/i,
           use: ["style-loader", "css-loader"],
         },
-
-        // TODO: Configure Babel loader for JavaScript files
         {
-          test: /\.js$/,
+          test: /\.m?js$/,
           exclude: /node_modules/,
           use: {
             loader: "babel-loader",
             options: {
               presets: ["@babel/preset-env"],
+              plugins: [
+                "@babel/plugin-proposal-object-rest-spread",
+                "@babel/transform-runtime",
+              ],
             },
           },
         },
