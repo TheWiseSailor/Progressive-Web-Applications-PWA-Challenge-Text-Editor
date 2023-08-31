@@ -7,6 +7,7 @@ Welcome to the Progressive Web Applications (PWA) Challenge: Text Editor project
 - [Introduction](#introduction)
 - [Getting Started](#getting-started)
 - [IndexedDB Logic](#indexeddb-logic)
+- [Showcase](#showcase)
 - [Text Editor Implementation](#text-editor-implementation)
 - [Service Worker and Caching](#service-worker-and-caching)
 - [PWA Installation Logic](#pwa-installation-logic)
@@ -28,6 +29,12 @@ This project involves building a text editor that functions as a Progressive Web
 
 - Open `develop/client/src/js/database.js`.
 - Implement `putDb` and `getDb` functions for interacting with IndexedDB.
+
+## Showcase
+![note1](https://github.com/TheWiseSailor/Progressive-Web-Applications-PWA-Challenge-Text-Editor/assets/68026214/5c4256ad-80ae-4040-9440-077d1a328fe3)
+![note2](https://github.com/TheWiseSailor/Progressive-Web-Applications-PWA-Challenge-Text-Editor/assets/68026214/6ff8e0cb-3972-4600-beaf-c0b53e29ea8b)
+![note3](https://github.com/TheWiseSailor/Progressive-Web-Applications-PWA-Challenge-Text-Editor/assets/68026214/bc2c2c5d-2be7-4fb0-a5b7-c7a87afa33a8)
+![note4](https://github.com/TheWiseSailor/Progressive-Web-Applications-PWA-Challenge-Text-Editor/assets/68026214/4c5001bc-0b9c-450a-a89e-ac7a21463893)
 
 ## Text Editor Implementation
 
